@@ -1,0 +1,196 @@
+:root {
+    --background: #111827;
+    --surface: #1f2937;
+    --border: #374151;
+    --player-x: #818cf8;
+    --player-o: #f472b6;
+    --text-primary: #f5f3ff;
+    --text-secondary: #a5b4fc;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 36px;
+    letter-spacing: -1.5px;
+    margin: 0 0 8px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 0 0 28px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.cell {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--surface);
+    border: 2px solid transparent;
+    border-radius: 16px;
+
+    font-size: clamp(36px, 10vw, 56px);
+    font-weight: 700;
+    cursor: pointer;
+
+    transition: background-color 0.2s,
+                border-color 0.2s,
+                transform 0.2s;
+}
+
+.cell:hover:not(:disabled) {
+    background-color: #293445;
+    border-color: var(--border);
+    transform: translateY(-2px);
+}
+
+.cell:disabled {
+    cursor: default;
+}
+
+.cell.x {
+    color: var(--player-x);
+}
+
+.cell.o {
+    color: var(--player-o);
+}
+
+.scoreboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 24px 0;
+}
+
+.score {
+    background-color: var(--surface);
+    padding: 16px 8px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.score p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.score h2 {
+    margin: 8px 0 0;
+    font-size: 28px;
+}
+
+.score.player-x h2 {
+    color: var(--player-x);
+}
+
+.score.player-o h2 {
+    color: var(--player-o);
+}
+
+.game-status {
+    background-color: var(--surface);
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.restart-button,
+.reset-score-button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.restart-button {
+    background-color: var(--player-x);
+    color: var(--background);
+    border: none;
+}
+
+.restart-button:hover {
+    background-color: #6366f1;
+}
+
+.reset-score-button {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.reset-score-button:hover {
+    background-color: var(--surface);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--player-x);
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    #root {
+        padding: 16px;
+    }
+
+    .container h1 {
+        font-size: 28px;
+    }
+
+    .board {
+        gap: 8px;
+    }
+
+    .cell {
+        border-radius: 12px;
+    }
+
+    .scoreboard {
+        gap: 8px;
+    }
+
+    .score {
+        padding: 12px 6px;
+    }
+
+    .score h2 {
+        font-size: 24px;
+    }
+}
