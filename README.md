@@ -79,7 +79,8 @@ npm run preview
 
 ## Live Demo
 
-Coming soon.
+[Play Tic-Tac-Toe]
+(https://tic-tac-toe-orpin-pi-34.vercel.app)
 
 ## Author
 
